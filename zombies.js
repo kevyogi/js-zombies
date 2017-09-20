@@ -110,6 +110,15 @@ class Player {
   getMaxHealth(){
     return this._maxHealth;
   }
+  takeItem(item){
+    if(this._pack.length === 3){
+      console.log("Pack is full, item could not be stored")
+      return this.name, this._pack, false;
+    }else{
+      this._pack.push(item);
+      return this.name, this._pack, true;
+    }
+  }
 }
 
 /**
