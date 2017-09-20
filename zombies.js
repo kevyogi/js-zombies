@@ -377,7 +377,6 @@ class StrongZombie extends Zombie {
  */
 
 
-
 /**
  * Class => RangedZombie(health, strength, speed)
  * -----------------------------
@@ -404,7 +403,6 @@ class RangedZombie extends Zombie {
  */
 
 
-
 /**
  * Class => ExplodingZombie(health, strength, speed)
  * -----------------------------
@@ -429,8 +427,6 @@ class ExplodingZombie extends Zombie {
  * ExplodingZombie Extends Zombie Class
  * -----------------------------
  */
-
-
 
 
 /**
