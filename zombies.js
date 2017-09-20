@@ -113,11 +113,26 @@ class Player {
   takeItem(item){
     if(this._pack.length === 3){
       console.log("Pack is full, item could not be stored")
-      return this.name, this._pack, false;
+      console.log(this.name + " has " + this._pack)
+      return false;
     }else{
       this._pack.push(item);
-      return this.name, this._pack, true;
+      console.log(this.name + " has " + this._pack)
+      return true;
     }
+  }
+  discardItem(item){
+    if(this._pack.indexOf(item) > -1){
+      this._pack.splice(this._pack.indexOf(item), 1);
+      console.log(this.name, this._pack)
+      return true;
+    }else{
+      console.log("You don't have that item");
+      return false;
+    }
+  }
+  checkPack(){
+    console.log(Player.getPack);
   }
 }
 
