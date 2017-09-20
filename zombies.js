@@ -144,6 +144,15 @@ class Player {
       this.equipped = itemToEquip;
     }
   }
+  eat(itemToEat){
+    if(itemToEat instanceof Food && this._pack.includes(itemToEat) && (itemToEat.energy > (this._maxHealth - this.health) || this.health == this._maxHealth)){
+      this._pack.splice(this._pack.indexOf(itemToEat), 1);
+      this.health = this._maxHealth;
+    }else if(itemToEat instanceof Food && this._pack.includes(itemToEat)){
+      this._pack.splice(this._pack.indexOf(itemToEat), 1);
+      this.health += itemToEat.energy;
+    }
+  }
 }
 
 /**
