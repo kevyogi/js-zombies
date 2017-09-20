@@ -134,6 +134,16 @@ class Player {
   checkPack(){
     console.log(Player.getPack);
   }
+  equip(itemToEquip){
+    if(itemToEquip instanceof Weapon && this._pack.includes(itemToEquip) && !this.equipped){
+      this.equipped = itemToEquip;
+      this._pack.splice(this._pack.indexOf(itemToEquip), 1);
+    }else if(itemToEquip instanceof Weapon && this._pack.includes(itemToEquip) && this.equipped){
+      this._pack.splice(this._pack.indexOf(itemToEquip), 1);
+      this._pack.push(this.equipped);
+      this.equipped = itemToEquip;
+    }
+  }
 }
 
 /**
