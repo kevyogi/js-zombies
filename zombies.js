@@ -153,6 +153,20 @@ class Player {
       this.health += itemToEat.energy;
     }
   }
+  useItem(item){
+    if(item instanceof Weapon){
+      this.equip(item);
+    }else if(item instanceof Food){
+      this.eat(item);
+    }
+  }
+  equippedWith(){
+    if(this.equipped){
+      return this.equipped.name;
+    }else{
+      return false;
+    }
+  }
 }
 
 /**
