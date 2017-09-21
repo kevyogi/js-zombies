@@ -113,6 +113,27 @@ function Player(name, health, strength, speed){
     return this._maxHealth;
   }
 
+  this.takeItem = function(item){
+    if(this._pack.length === 3){
+      console.log(this.name, this._pack, "Your pack is full, item was not picked up.")
+      return false;
+    }else{
+      this._pack.push(item);
+      console.log(this.name, this._pack)
+      return true;
+    }
+  }
+
+  this.discardItem = function(item){
+    if(this._pack.indexOf(item) > -1){
+      this._pack.splice(this._pack.indexOf(item), 1);
+      console.log(this.name, this._pack, item + " was discarded.");
+      return true;
+    }else{
+      console.log("You don't have that item to discard.")
+      return false;
+    }
+  }
 }
 
 /**
