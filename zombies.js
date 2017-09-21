@@ -134,6 +134,47 @@ function Player(name, health, strength, speed){
       return false;
     }
   }
+
+  this.checkPack = function(){
+    console.log(this._pack);
+    return this._pack;
+  }
+
+  this.equip = function(item){
+    if(item instanceof Weapon && this._pack.indexOf(item) > -1 && !this.equipped){
+      this.equipped = item;
+      this._pack.splice(this._pack.indexOf(item), 1);
+    }else if(item instanceof Weapon && this._pack.indexOf(item) > -1 && this.equipped){
+      this._pack.splice(this._pack.indexOf(item), 1, this.equipped);
+      this.equipped = item;
+    }
+  }
+
+  this.eat = function(item){
+    if(item instanceof Food && this._pack.includes(item) && (item.energy > (this._maxHealth - this.health) || this.health === this._maxHealth)){
+      this._pack.splice(this._pack.indexOf(item), 1);
+      this.health = this._maxHealth;
+    }else if(item instanceof Food && this._pack.includes(item)){
+      this._pack.splice(this._pack.indexOf(item), 1);
+      this.health += item.energy;
+    }
+  }
+
+  this.useItem = function(item){
+    if(item instanceof Weapon){
+      this.equip(item);
+    }else if(item instanceof Food){
+      this.eat(item);
+    }
+  }
+
+  this.equippedWith = function(){
+    if(this.equipped){
+      return this.name, this.equipped.name;
+    }else{
+      return false;
+    }
+  }
 }
 
 /**
