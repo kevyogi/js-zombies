@@ -8,6 +8,9 @@
  * @property {string} name
  */
 
+function Item(name){
+  this.name = name;
+}
 
 /**
  * Class => Weapon(name, damage)
@@ -25,6 +28,13 @@
  * @property {number} damage
  */
 
+function Weapon(name, damage){
+  Item.call(this, name);
+  this.damage = damage;
+}
+
+Weapon.prototype = Object.create(Item.prototype);
+Weapon.prototype.constructor = Weapon;
 
 /**
  * Weapon Extends Item Class
@@ -55,7 +65,13 @@
  * -----------------------------
  */
 
+function Food(name, energy){
+  Item.call(this, name);
+  this.energy = energy;
+}
 
+Food.prototype = Object.create(Item.prototype);
+Food.prototype.constructor = Food;
 
 /**
  * Class => Player(name, health, strength, speed)
@@ -79,6 +95,25 @@
  * @property {method} getMaxHealth         Returns private variable `maxHealth`.
  */
 
+function Player(name, health, strength, speed){
+  this.name = name;
+  this.health = health;
+  this.strength = strength;
+  this.speed = speed;
+  this.isAlive = true;
+  this.equipped = false;
+  this._pack = [];
+  this._maxHealth = health;
+
+  this.getPack = function(){
+    return this._pack;
+  }
+
+  this.getMaxHealth = function(){
+    return this._maxHealth;
+  }
+
+}
 
 /**
  * Player Class Method => checkPack()
@@ -91,6 +126,7 @@
  *
  * @name checkPack
  */
+
 
 
 /**
